@@ -1,0 +1,49 @@
+
+# Inserts a blank line between shell prompts
+add_newline = true
+
+format = "[\u276F](#cf889b)[\u276F](#81ada3)[\u276F](#aab66b) [\uf17a](blue) $time$all"
+
+# Replace the "❯" symbol in the prompt with "➜"
+[character] # The name of the module we are configuring is "character"
+success_symbol = "[\u276F](bold green)" # The "success_symbol" segment is being set to "➜" with the color "bold green"
+error_symbol = "[\u276F](bold red)"
+
+[directory]
+truncation_length = 5
+truncation_symbol = "…/"
+style = "green"
+read_only = "🔒"
+format = "[  $path]($style)[$lock_symbol]($lock_style) "
+
+[git_branch]
+symbol = ""
+style = "red"
+format = '[$symbol $branch ]($style)'
+
+[time]
+disabled = false
+use_12hr = true
+time_format = "%R" # Hour:Minute Format
+style = "yellow"
+format = '[  $time]($style)'
+
+# Disable the package module, hiding it from the prompt completely
+[package]
+disabled = true
+
+[dotnet]
+symbol = " "
+
+[git_status]
+conflicted = "🏳"
+ahead = "🏎💨"
+behind = "😰"
+diverged = "😵"
+up_to_date = "✓"
+untracked = "🤷"
+stashed = "📦"
+modified = "📝"
+staged = '[++\($count\)](green)'
+renamed = "👅"
+deleted = "🗑"
