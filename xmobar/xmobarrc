@@ -1,0 +1,64 @@
+-- vim: ft=haskell
+--
+
+Config {
+         --font = "xft:Zekton:size=15:bold:antialias=true:hinting=true"
+         font = "xft:Hack:size=13:bold:antialias=true:hinting=true"
+       , additionalFonts = [
+           "xft:Hack Nerd Font Mono:size=15:antialias=true:hinting=true" 
+	 ]
+       , allDesktops = True
+       , persistent = True
+       , bgColor = "#282828"
+       , fgColor = "#ebdbb2"
+       , position = TopSize C 95 40
+       , commands = [ 
+                      Run Cpu [ "--template", "<fn=1></fn> <bar>"
+                              , "-f", ":"
+			      , "-L", "25"
+			      , "--Low","3"
+                              , "--High","50"
+                              , "--low","#8ec07c"
+                              , "--normal","#8ec07c"
+                              , "--high","#fb4934"] 20
+
+                    , Run Memory ["-t","<fn=1>﬙</fn> <usedbar>"
+                                 ,"-f", ":"
+				 ,"-H","80"
+                                 ,"-L","25"
+                                 ,"-l","#fb4934"
+                                 ,"-n","#fb4934"
+                                 ,"-h","#fb4934"] 20
+
+                    , Run Date "%a %b %_d %I:%M" "date" 300
+                    , Run DynNetwork ["-t","<fn=1></fn> <rx> <fn=1></fn> <tx>"
+                                     ,"-H","200"
+                                     ,"-L","10"
+				     ,"-S","True"
+                                     ,"-h","#ebdbb2"
+                                     ,"-l","#ebdbb2"
+                                     ,"-n","#ebdbb2"] 20
+
+                    , Run CoreTemp ["-t", "<fc=#CDB464><fn=1></fn></fc> <core0>°"
+                                   , "-L", "30"
+                                   , "-H", "75"
+                                   , "-l", "lightblue"
+                                   , "-n", "#bbc2cf"
+                                   , "-h", "#aa4450"] 50
+
+                    , Run StdinReader
+		    , Run Battery [
+			"-t", "<acstatus> <left>%",
+			"--",
+			"-i", "<fn=1>ﮣ</fn>",
+			"-O", "<fn=1>ﮣ</fn>",
+			"-o", "<fn=1></fn>",
+			"-h", "green",
+			"-l", "red"
+			] 10
+		    , Run ComX "pamixer" [ "--get-volume-human"] "muted" "volume" 1
+                    ]
+       , sepChar = "%"
+       , alignSep = "}{"
+       , template = "  %StdinReader% }{ <box type=Bottom width=2 mb=2 color=#8ec07c> %cpu% </box> <box type=Bottom width=2 mb=2 color=#fb4934> %memory% </box> <box type=Bottom width=2 mb=2 color=#d79921> %battery% </box> <box type=Bottom width=2 mb=2 color=#98971a> <fn=1></fn> %volume% </box> <box type=Bottom width=2 mb=2 color=#b16286> %dynnetwork% </box> <box type=Bottom width=2 mb=2 color=#458588> <fn=1></fn> %date% </box>  "   -- #69DFFA
+

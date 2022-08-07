@@ -1,0 +1,8 @@
+@theme "gruvbox-dark.rasi"
+
+configuration {
+  font: "Hurmit Nerd Font 12";
+  show-icons: false;
+
+  fixed-num-lines: true;
+}
